@@ -1,0 +1,394 @@
+﻿@page "/uploaddata"
+@using ControWell.Client.Services.RegistroService;
+@inject IRegistroService RegistroService
+@inject HttpClient Http
+@inject NavigationManager NanigationManager
+@using ControWell.Shared
+@using System.Data
+@using System.IO
+@using NPOI.XSSF.UserModel
+@using NPOI.SS.UserModel
+
+
+
+<h3>CrearPozo</h3>
+
+    <div class="container">
+    <InputFile OnChange="@ImportExcelFile" class="InputFile" accept=".xlsx" />
+
+
+    <p>Ingresar pozos / Seleccione o arrastre un archivo</p>
+
+
+    @if (loadFileExcel == false){   
+      <button disabled class="btn btn-primary" @onclick=Procesar>Confirmar</button>
+    }else {<button class="btn btn-primary" @onclick=Procesar>Confirmar</button>}
+
+    @if (loadFileExcel == false){
+        <button disabled class="btn btn-info" @onclick=ver>Ver</button>
+    }else {    <button class="btn btn-info" @onclick=ver>Ver</button>}
+
+    <button class="btn btn-warning" @onclick=volver>Descartar</button>
+
+</div>
+
+<div class="table-container-scroll">
+
+     <table class="table">
+        <thead> 
+            <tr>
+              @foreach (DataColumn col in dt.Columns)
+               {
+                 <th>@col.ColumnName</th>
+               }                           
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (DataRow row in dt.Rows)
+        {             
+            <tr>
+                @foreach (DataColumn col in dt.Columns)
+                {
+                  <td>@row[col.ColumnName]</td>               
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+   
+    <style>
+
+
+    .container {
+        max-width: 1160px;
+        margin: 0 auto;
+    }
+
+    body {
+        font-family: Arial;
+    }
+
+    InputSelect {
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    .InputFile{
+        height: 50%;
+        background-color: cadetblue;
+        color: white;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    input {
+        border-radius: 5px;
+        background-color: #f7fafc;
+        width: 90%;
+        height: 40px;
+        border: 0.5px dashed blue;
+    }
+
+    button {
+        margin-left: 5px;
+    }
+
+    /* estilos de la tabla */
+
+    .table-container-scroll {
+        overflow: scroll;
+        height: 400px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    table {
+        background-color: white;
+        text-align: center;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px;
+        margin-left: 40px;
+    }
+
+    thead {
+        background-color: #388e3c;
+        border-bottom: solid 3px #0F362D;
+        color: #eeeeee;
+        position: sticky;
+        top: 0px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #ddd;
+    }
+
+    tr:hover td {
+        background-color: rgba(100, 176, 161, 0.8);
+        /*background-color: #369681;*/
+        color: #eeeeee;
+    }
+
+    #db-spinner {
+        position: absolute;
+        top: 55px;
+        left: 250px;
+        padding: 12px;
+        width: 1110px;
+        height: 570px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .upload_hide {
+        position: absolute;
+        max-width: 840px;
+        max-height: 540px;
+        width: 100%;
+        height: 100%;
+        background-color: red;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 5;
+        opacity: 0;
+    }
+
+    .upload_label {
+        position: absolute;
+        max-width: 800px;
+        max-height: 500px;
+        width: 100%;
+        height: 100%;
+        margin: 20px !important;
+        border: 2px dashed #139CFF;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        border-radius: 8px;
+        flex-direction: column;
+    }
+
+    .choose_file {
+        width: 200px;
+        height: 50px;
+        border: none;
+        background-color: #139CFF;
+        color: #fff;
+        border-radius: 3px;
+        margin: 30px auto;
+        pointer-events: none;
+    }
+
+    .delete_file {
+        width: 200px;
+        height: 50px;
+        border: none;
+        background-color: #139CFF;
+        color: #fff;
+        border-radius: 3px;
+        margin: 30px auto;
+        cursor: pointer;
+        z-index: 6;
+        position: absolute;
+        top: 62%;
+        left: 51%;
+        transform: translate(-50%, -50%);
+        outline: none;
+    }
+
+
+    .upload_label > i {
+        color: #FF1384;
+        font-size: 110px;
+        margin: 30px 0;
+    }
+
+    .drag_text {
+        color: #139CFF;
+        font-size: 22px;
+        margin: 30px 0 0 0;
+    }
+
+
+    .image > img {
+        padding: 40px;
+        width: 80%;
+        height: auto;
+        position: absolute;
+        left: 10%;
+        top: 0;
+    }
+
+    .container-upload{
+        background-color: lightgreen;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    </style>
+
+@code {
+    //Funcion para administrar excel
+    DataTable dt = new DataTable();
+
+    Boolean loadFileExcel = false;
+
+    async Task ImportExcelFile(InputFileChangeEventArgs e)
+    {
+        loadFileExcel = true ;
+
+        var fileStream = e.File.OpenReadStream();
+        var ms = new MemoryStream();
+        await fileStream.CopyToAsync(ms);
+        fileStream.Close();
+        ms.Position = 0;
+
+        ISheet sheet;
+        var xsswb = new XSSFWorkbook(ms);
+
+        sheet = xsswb.GetSheetAt(0);
+        IRow hr = sheet.GetRow(0);
+        var rl = new List<string>();
+
+        int cc = hr.LastCellNum;
+        for (var j = 0; j < cc; j++)
+        {
+            ICell cell = hr.GetCell(j);
+            dt.Columns.Add(cell.ToString());
+        }
+
+        for (var j = (sheet.FirstRowNum + 1); j <= sheet.LastRowNum; j++)
+        {
+            var r = sheet.GetRow(j);
+            for (var i = r.FirstCellNum; i < cc; i++)
+            {
+                rl.Add(r.GetCell(i).ToString());
+            }
+            if (rl.Count > 0)
+            {
+                dt.Rows.Add(rl.ToArray());
+            }
+            rl.Clear();
+        }
+    }
+
+    //Fin de funcion para administrar excel
+
+    //Funcion para tomar los datos del excel
+    [Parameter]
+
+    public int? Id { get; set; }
+    /*Objeto reistro*/
+
+
+
+
+    //Fin de funcion para tomar datos de excel
+
+    //Funcion para enviar los datos a la base
+    async Task Procesar()
+    {
+        Registro registro = new Registro();//creo el objeto registro
+                                           //lo que hago es llenar por primera vez el registro con datos iniciales ficticios
+
+        foreach (DataRow row in dt.Rows)
+        {
+
+            foreach (DataColumn col in dt.Columns)
+            {
+
+                var celda = row[col.ColumnName];
+                var columna = col.ColumnName;
+                columna = columna.ToString()
+    ;
+                if (columna == "Fecha")
+                {
+                    registro.FechaHora = Convert.ToDateTime(celda.ToString());
+
+                }
+                if (columna == "Pozo")
+                {
+                    foreach (var pozo in Pozos)
+                    {
+                        if (pozo.NombrePozo == celda.ToString())
+                        {
+                            registro.PozoId = pozo.Id;
+                        }
+                    }
+                }
+               
+                foreach (var variable in Variables)
+                {
+                    var RegistroExiste = false;//varible bandera
+                    registro.Id = default;
+                    if (variable.Nombre == columna)
+                    {
+                        registro.VariableProcesoId = variable.Id;
+                        registro.Medida = Convert.ToSingle(celda.ToString());
+                        foreach(var i in Registros)
+                        {
+                            if (i.PozoId == registro.PozoId && i.VariableProcesoId == registro.VariableProcesoId && i.FechaHora == registro.FechaHora)
+                            {
+                                RegistroExiste = true;
+                                registro.Id = i.Id;
+                            }
+                        }
+                        if (RegistroExiste == true)
+                        {
+                            RegistroService.UpdateRegistro(registro);
+                            
+                        }
+                        if (RegistroExiste == false)
+                        {
+                            RegistroService.CreateRegistro(registro);
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
+    //Fin de funcion para enviar los datos a la base
+
+
+    //Inicio del codigo para obtener todos los pozos y las variables//
+    public static List<Pozo> Pozos = new List<Pozo>();
+    public static List<VariableProceso> Variables = new List<VariableProceso>();
+    public static List<Registro> Registros = new List<Registro>();
+    protected override async Task OnInitializedAsync()
+    {
+        var mipozo = await Http.GetFromJsonAsync<List<Pozo>>("api/Pozo");
+        if (mipozo != null)
+            Pozos = mipozo;
+
+        var mivariable = await Http.GetFromJsonAsync<List<VariableProceso>>("api/VariableProceso");
+        if (mivariable != null)
+            Variables = mivariable;
+        
+        var miregistro = await Http.GetFromJsonAsync<List<Registro>>("api/Registro");
+        if (miregistro != null)
+            Registros = miregistro;
+    }
+    //fin del codigo para obtener los pozos
+
+    //funcion para volver
+    public void volver()
+    {
+        NanigationManager.NavigateTo("/registrolist");
+    }
+    //fucion para ver el excel
+    public void ver()
+    {
+        
+    }
+}

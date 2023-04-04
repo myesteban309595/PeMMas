@@ -1,0 +1,248 @@
+﻿@page "/consultaregistros"
+@using ControWell.Client.Services.RegistroService;
+@using ControWell.Client.Services.PozoService;
+@using ControWell.Client.Services.VariableProcesoService;
+@inject HttpClient Http
+@inject NavigationManager NanigationManager
+@inject IRegistroService RegistroService
+@using ControWell.Shared
+@using System.Net.Http.Json
+@using System.Linq
+@using SpreadsheetLight;
+@using System.Data;
+@using ClosedXML.Excel;
+@using System.Data.SqlClient;
+@using System.IO
+
+
+@using NPOI.HSSF.UserModel;
+@using NPOI.SS.UserModel;
+@using NPOI.SS.Util;
+@using NPOI.HSSF.Util;
+@using NPOI.POIFS.FileSystem;
+@using NPOI.HPSF;
+<h3>Consutas</h3>
+<h3>Pozos registrados por variable</h3>
+
+<EditForm Model="registroFiltro" class="row mt-4">
+    <div class="col-12">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5>Consultar y Exportar</h5>
+            </div>
+
+            <div class="card-body">
+                <form>
+                    <div class="form-row align-items-end">
+                        <div class="col-sm-3">
+                            <label class="form-text">Pozo</label>
+                            <InputSelect class="form-select" @bind-Value=registroFiltro.PozoId>
+                                @foreach (var pozo in Pozos)
+                                {
+                                    <option value="@pozo.Id">@pozo.NombrePozo</option>
+                                }
+
+                            </InputSelect>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="form-text">Variables de proceso</label>
+                            <div class="" style="height:300px">
+                                @if (1 == 1)//este 1=1 es solo para que entre a realizar la accion
+                                {
+                                    var VarRegPorPozo = from re in Registros//alarmas para ese pozo en especifico
+                                                     where re.PozoId == registroFiltro.PozoId
+                                                     select re.VariableProceso;
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <td>Nombre Variable</td>
+                                                <td>Selec</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var i in VarRegPorPozo)
+                                            {
+                                                <tr>
+                                                    <td>@i.Nombre</td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1">
+                                                    </td>
+                                                </tr>
+                                            
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                    //<option value="@v.Id">@v.Nombre</option>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="form-text">Fecha inicio</label>
+                            <input type="date" class="form-control" />
+                        </div>
+
+                        <div class="col-sm-3">
+                            <label class="form-text">Fecha fin</label>
+                            <input type="date" class="form-control" />
+                        </div>
+
+                        <div class="col-sm-3">
+                            <button class="btn btn-success">Ver</button>
+                            <button class="btn btn-success" @onclick=Generar>Export as XLXS</button>
+                            <button class="btn btn-warning">Export as PDF</button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+                        <div class="col-12">
+                            <div class="shadow-sm">
+                                <div class="card-header">
+                                    <h5>Registro por pozo y variables</h5>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Variable</th>
+                                                <th>Medida</th>
+                                                <th>unidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         @foreach(var r in Registros)
+                                            {
+                                                if (registroFiltro.PozoId == r.PozoId && registroFiltro.VariableProcesoId==r.VariableProcesoId)
+                                                {
+                                                <tr>
+                                                    <td>@r.FechaHora</td>
+                                                    <td>@r.VariableProceso.Nombre</td>
+                                                    <td>@r.Medida</td>
+                                                    <td>@r.VariableProceso.Unidad</td>
+                                                </tr>
+                                                }
+
+                                               
+                                            }  
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>    
+</EditForm>
+<form action="/Registro/GenerarExcel" method="get">
+<button type="submit"></button>    
+</form>
+@code{
+    [Parameter]
+
+    public int? Id { get; set; }
+
+    Registro registro = new Registro();
+    Registro registroFiltro = new Registro();
+    VariableProceso variable = new VariableProceso();
+
+    Pozo pozo = new Pozo();
+
+
+    public static List<VariableProceso> Variables = new List<VariableProceso>();
+
+    public static List<Pozo> Pozos = new List<Pozo>();
+    public static List<Registro> Registros = new List<Registro>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var mivariable = await Http.GetFromJsonAsync<List<VariableProceso>>("api/VariableProceso");
+        if (mivariable != null)
+            Variables = mivariable;
+
+
+        var mipozo = await Http.GetFromJsonAsync<List<Pozo>>("api/Pozo");
+        if (mipozo != null)
+            Pozos = mipozo;
+
+        var miregistro = await Http.GetFromJsonAsync<List<Registro>>("api/Registro");
+        if (miregistro != null)
+            Registros = miregistro;
+
+
+    }
+
+
+    async Task EnviarRegistro()
+    {
+        await RegistroService.CreateRegistro(registro);
+
+    }
+
+    //Linq para traer los los registros por pozo y fecha y variable
+    public void consulta()
+    {
+        string pathFile = @"C:\Users\Dagoberto\Downloads" + "miExcel.xlsx";
+        SLDocument oSLDocument = new SLDocument();
+        System.Data.DataTable dt = new System.Data.DataTable();
+        //columnas
+        dt.Columns.Add("Id", typeof(string));
+        dt.Columns.Add("Fecha", typeof(string));
+        dt.Columns.Add("Pozo", typeof(string));
+        dt.Columns.Add("Variable", typeof(string));
+        dt.Columns.Add("Medida", typeof(string));
+        dt.Columns.Add("Unidad", typeof(string));
+
+
+        //Registros Row
+        dt.Rows.Add("1", "Noviembre", "ch", "presion", "150", "psi");
+
+        //Matriz
+
+        oSLDocument.ImportDataTable(1, 1, dt, true);
+        oSLDocument.SaveAs(pathFile);
+    }
+
+    static void Generar()
+    {
+
+        // Create a new workbook and a sheet named "User Accounts"
+        var workbook = new HSSFWorkbook();
+        var sheet = workbook.CreateSheet("User Accounts");
+        // Add header labels
+        var rowIndex = 0;
+        var row = sheet.CreateRow(rowIndex);
+        row.CreateCell(0).SetCellValue("Username");
+        row.CreateCell(1).SetCellValue("Email");
+        row.CreateCell(2).SetCellValue("Joined");
+        row.CreateCell(3).SetCellValue("Last Login");
+        row.CreateCell(4).SetCellValue("Approved?");
+        row.CreateCell(5).SetCellValue("Comments");
+        rowIndex++;
+        // Add data rows
+        // Save the Excel spreadsheet to a file on the web server's file system
+        using (var fileData = new FileStream("reporte.xlsx", FileMode.Create))
+        {
+            workbook.Write(fileData);
+        }
+        // Save the Excel spreadsheet to a MemoryStream and return it to the client
+        using (FileStream stream = new FileStream("outfile.xlsx", FileMode.Create, FileAccess.Write))
+        {
+            workbook.Write(stream);
+            //return File(stream);
+            return ;
+
+        }
+    }
+
+
+
+}

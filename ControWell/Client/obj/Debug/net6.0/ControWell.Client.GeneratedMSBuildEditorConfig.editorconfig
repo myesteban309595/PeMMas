@@ -1,0 +1,189 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = ControWell.Client
+build_property.RootNamespace = ControWell.Client
+build_property.ProjectDir = D:\DESARROLLADOR BAKEND-FRONTEND\subidaemergenciarepo\ControWell\Client\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\DESARROLLADOR BAKEND-FRONTEND\subidaemergenciarepo\ControWell\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/BalanceComponents/DateComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = QmFsYW5jZUNvbXBvbmVudHNcRGF0ZUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/BalanceComponents/EnOperacion.razor]
+build_metadata.AdditionalFiles.TargetPath = QmFsYW5jZUNvbXBvbmVudHNcRW5PcGVyYWNpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/BalanceComponents/EstadoActual.razor]
+build_metadata.AdditionalFiles.TargetPath = QmFsYW5jZUNvbXBvbmVudHNcRXN0YWRvQWN0dWFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/BalanceComponents/GuiaDespachos.razor]
+build_metadata.AdditionalFiles.TargetPath = QmFsYW5jZUNvbXBvbmVudHNcR3VpYURlc3BhY2hvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/BalanceComponents/Imagen.razor]
+build_metadata.AdditionalFiles.TargetPath = QmFsYW5jZUNvbXBvbmVudHNcSW1hZ2VuLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/BalanceComponents/IngresoDatos.razor]
+build_metadata.AdditionalFiles.TargetPath = QmFsYW5jZUNvbXBvbmVudHNcSW5ncmVzb0RhdG9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/BalanceComponents/MisMovimientos.razor]
+build_metadata.AdditionalFiles.TargetPath = QmFsYW5jZUNvbXBvbmVudHNcTWlzTW92aW1pZW50b3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/BalanceComponents/Variables.razor]
+build_metadata.AdditionalFiles.TargetPath = QmFsYW5jZUNvbXBvbmVudHNcVmFyaWFibGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Alarma/AlarmaList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxhcm1hXEFsYXJtYUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Alarma/FiltroAlarma.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxhcm1hXEZpbHRyb0FsYXJtYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Balance/Movimientos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFsYW5jZVxNb3ZpbWllbnRvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/CarroTanques/CarroTanquesList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fycm9UYW5xdWVzXENhcnJvVGFucXVlc0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Despachos/DespachosPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVzcGFjaG9zXERlc3BhY2hvc1BhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/FormatoCarga/FormatoCargaList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybWF0b0NhcmdhXEZvcm1hdG9DYXJnYUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/FormatoCarga/MatTableRow.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybWF0b0NhcmdhXE1hdFRhYmxlUm93LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Guia/GuiaList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3VpYVxHdWlhTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/OfertaDiaria/OfertaDiariaList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT2ZlcnRhRGlhcmlhXE9mZXJ0YURpYXJpYUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Operarios/OperariosList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3BlcmFyaW9zXE9wZXJhcmlvc0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Pozo/PozoList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG96b1xQb3pvTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Registro/Alerta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cQWxlcnRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Registro/ConsultaRegistros.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cQ29uc3VsdGFSZWdpc3Ryb3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Registro/FiltroRegistro.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cRmlsdHJvUmVnaXN0cm8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Registro/RegistroList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cUmVnaXN0cm9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Registro/Uploaddata.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cm9cVXBsb2FkZGF0YS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Sello/SelloList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VsbG9cU2VsbG9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/start/Starting.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc3RhcnRcU3RhcnRpbmcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Tanque/AforoTKList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlXEFmb3JvVEtMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Tanque/AgregarAforo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlXEFncmVnYXJBZm9yby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Tanque/Components/Datos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlXENvbXBvbmVudHNcRGF0b3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Tanque/Components/EstadoActual.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlXENvbXBvbmVudHNcRXN0YWRvQWN0dWFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Tanque/Components/RealizarMovimiento.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlXENvbXBvbmVudHNcUmVhbGl6YXJNb3ZpbWllbnRvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Tanque/Components/TanqueFluido.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlXENvbXBvbmVudHNcVGFucXVlRmx1aWRvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Tanque/EstadoTanques/EstadoTanques.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlXEVzdGFkb1RhbnF1ZXNcRXN0YWRvVGFucXVlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/Tanque/TanquesList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFucXVlXFRhbnF1ZXNMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Pages/VariableProceso/VariableProcesoList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmFyaWFibGVQcm9jZXNvXFZhcmlhYmxlUHJvY2Vzb0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Shared/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Shared/Menu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-fx0juhdfvs
+
+[D:/DESARROLLADOR BAKEND-FRONTEND/subidaemergenciarepo/ControWell/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-xjecy8nknt
